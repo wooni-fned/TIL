@@ -3,9 +3,11 @@
 ## 클래스(Class)란?
 
 클래스의 정의
+
   - `객체를 정의해놓은 것` 또는 `객체의 설계도 또는 틀` 이라고 정의할 수 있다.
 
 클래스의 용도
+
   - 객체를 생성하는데 사용되며 객체는 클래스에 정의된 대로 생성된다.
 
 ---
@@ -13,16 +15,20 @@
 ## 객체 (Object)
 
 객채의 정의
+
 - 사전적 정의는, 실제로 존재하는 것이다.
 - 사물 또는 개념
 
 객체의 용도 
+
 - 객체가 가지고 있는 기능과 속성에 따라 다르다.
 
 유형의 객체
+
 - 우리가 볼 수 있는 사물 자동차, 책상, 의자 가 곧 객체이다.
 
 무형의 객체
+
 - 수학공식, 프로그램 에러와 같은 논리나 개념
 
 객체는 클래스에 정의 된 내용대로 메모리에 생성되는것을 뜻한다.
@@ -111,6 +117,13 @@ suv = new Car(); // Car인스턴스를 생성한 후 생성된 Car 인스턴스 
 Car suv = new Car(); // 이처럼 한줄로 표현할 수 있다.
 ```
 
+---
+ > 여기서 용어의 정리!
+인스턴스 변수값을 담는 참조변수를 다른말로 레퍼런스 변수라고도 한다.
+참조변수 = 레퍼런스변수 이다.
+그래서 아래부터는 레퍼런스 변수라고 선언하겠다.
+---
+
 조금더 정확하게 해석하면 
 `Car클래스설계도`에 따라 인스턴스 `주소값` 을 같는 레퍼런스 변수`suv`를 생성한다.
 
@@ -148,9 +161,110 @@ class Car Test {
 
 여기서 생성되는 인스턴스 주소값은 몇개일까?
 
-총 4가지 이다.
+총 1가지 이다.
 
 ```bash
-carName, color, power, radioVolume
+suv
 ```
 
+JVM Stack에 suv 변수가 생성되고 Car클래스의 인스턴스가 suv변수의 주소값을 갖는 메모리가 생성된다.
+
+- `suv` 주소값  0x001
+  - 0x001의 주소값을 갖는 인스턴스 carName, color, power, radioVolume, power(), radioVolumeUp(), radioVolumDown() 그리고 메소드를 제외한 각 인스턴스는 초기값을 가진다.
+
+> 인스턴스는 레퍼런스변수를 통해서만 다룰수 있으며, 레퍼런스 변수의 타입은 인스턴스의 타입과 일치해야 한다.
+
+
+## 래퍼런스 배열
+
+많은수의 객체를 다뤄야 할때 배열로 다루면 편리할 것이다.
+객체 역시 배열로 다루는것이 가능하며 이를 레퍼런스 배열이라 한다.
+
+- 문법:
+  - `클래스명[]` `배열명` = `new 클래스명`[`레퍼런스개수`];
+- 주의!
+  - 레퍼런스 배열이다. 인스턴스 배열이 아니다!
+  - 배열안에 인스턴스값이 저장되는것이 아니고 인스턴스 주소값이 저장된다.
+
+다음은 길이가 3인 배열을 생성하는 코드이다.
+```java
+Score[] arr = new Score[3];
+
+arr[0] = new Score();
+arr[1] = new Score();
+arr[2] = new Score();
+```
+
+배열의 인덱스는 0부터 시작한다.
+
+다뤄야할 객체수가 많다면 for문을 사용하면 된다.
+
+```java
+Score[] arr = new Score[100];
+
+for (int i = 0; i < arr.length; i++) {
+  arr[i] = new Score();
+}
+```
+
+간단 예제를 통해 살펴보자
+
+```java
+public class Exam0240 {
+
+// 여러 메서드에서 공유하려면 클래스를 메서드 밖에 선언해야 한다.
+// => static 메서드들이 사용할 수 있게 클래스도 static으로 선언한다.
+// => static에 대한 의미는 나중에 설명한다.
+
+  static class Score {
+    String name;
+    int kor;
+    int eng;
+    int math;
+    int sum;
+    float aver;
+  }
+
+  public static void main(String[] args) {
+
+    Score[] arr = new Score[3];
+
+    // 메서드에서 생성한 Score 객체를 레퍼런스 배열의 각 항목에 저장한다.
+    arr[0] = createScore("홍길동", 100, 100, 100);
+    arr[1] = createScore("임꺽정", 90, 90, 90);
+    arr[2] = createScore("유관순", 80, 80, 80);
+
+    // 메서드에 배열을 통째로 넘길 수 있다.
+    // => 정확하게 표현하면, arr 변수에 저장된 레퍼런스 배열의 주소를 넘긴다.
+    printScoreList(arr);
+
+  }
+
+  // 클래스를 이용하면 성적 정보를 하나로 묶어 리턴할 수 있다.
+  // 참고!
+  // - 다음과 같이 메서드를 통해 인스턴스를 생성하는 코딩 기법을 
+  //   "팩토리 메서드(factory method)" 패턴이라 부른다.
+  static Score createScore(String name, int kor, int eng, int math) {
+    Score s = new Score();
+
+    s.name = name;
+    s.kor = kor;
+    s.eng = eng;
+    s.math = math;
+    s.sum = s.kor + s.eng + s.math;
+    s.aver = s.sum / 3f;
+
+    return s;
+  }
+
+  static void printScoreList(Score[] arr) {
+    // main()에서 넘겨준 레퍼런스 배열의 주소를 arr 변수에 받는다.
+    // 결국 main()에서 만든 레퍼런스 배열을 사용하는 것이다.
+    //
+    for (int i = 0; i < arr.length; i++) {
+      System.out.printf("%s: %d, %d, %d, %d, %.1f\n",
+          arr[i].name, arr[i].kor, arr[i].eng, arr[i].math, arr[i].sum, arr[i].aver);
+    }
+  }
+}
+```
