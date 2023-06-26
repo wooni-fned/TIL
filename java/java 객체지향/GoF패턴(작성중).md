@@ -14,3 +14,19 @@
 
 ### Observer 패턴의 동작원리
 
+## Interator 패턴
+
+- 무언가 많이 모여있는 것을 하나씩 지정해서 순서대로 처리하는 패턴
+- 무언가를 반복한다는 의미
+
+```java
+​for (int i = 0; i < n; i++) {
+    System.out.println(array[i]);
+}
+```
+
+for문 초기호화문에서 사용되는 i 변수의 역할을 추상화 한것이다.
+
+- interface 문법
+- Nested 클래스 문법
+- Interator 사용법
