@@ -30,3 +30,5 @@ for문 초기호화문에서 사용되는 i 변수의 역할을 추상화 한것
 - interface 문법
 - Nested 클래스 문법
 - Interator 사용법
+
+## Factory Method 패턴
