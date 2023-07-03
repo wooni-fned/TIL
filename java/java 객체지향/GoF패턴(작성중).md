@@ -32,3 +32,16 @@ for문 초기호화문에서 사용되는 i 변수의 역할을 추상화 한것
 - Interator 사용법
 
 ## Factory Method 패턴
+
+
+## Builder패턴
+
+```java
+GsonBuilder builder = new GsonBuilder();
+builder.setDateFormat("yyyy-MM-dd");
+Gson gson = builder.create();
+```
+
+```java
+Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+```
