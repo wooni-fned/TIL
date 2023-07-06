@@ -45,3 +45,63 @@ Gson gson = builder.create();
 ```java
 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 ```
+
+## Template Method
+
+여러 클래스에서 공통으로 사용하는 메서드를 템플릿화 하여 상위 클래스에서 정의하고, 하위 클래스마다 세부 동작 사항을 다르게 구현하는 패턴
+
+변하지 않는 기능(템플릿)은 상위 클래스에 만들어두고 자주 변경되며 확장할 기능은 하위 클래스에서 만들도록 하여, 상위의 메소드 실행 동작 순서는 고정하면서 세부 실행 내용은 다양화 될 수 있는 경우에 사용된다.
+
+템플릿 메소드 패턴은 상속이라는 기술을 극대화하여, 알고리즘의 뼈대를 맞추는 것에 초점을 둔다.
+
+![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/template-method-pattern.png)
+
+위와 같은 구조의 템플릿 메소드 패턴 적용에 대한 코드이다.
+
+**AbstractClass.java**
+
+```java
+public abstract class AbstractClass {
+    
+    protected abstract void hook1();
+    
+    protected abstract void hook2();
+    
+    public void templateMethod() {
+        hook1();
+        hook2();
+    }
+    
+}
+```
+
+**ConcreteClass**
+
+```java
+public class ConcreteClass extends AbstractClass {
+
+    @Override
+    protected void hook1() {
+        System.out.println("ABSTRACT hook1 implementation");
+    }
+
+    @Override
+    protected void hook2() {
+        System.out.println("ABSTRACT hook2 implementation");
+    }
+
+}
+```
+
+**TemplateMethodPatternClient.java**
+
+```java
+public class TemplateMethodPatternClient {
+    public static void main(String[] args) {
+        AbstractClass abstractClass = new ConcreteClass();
+        abstractClass.templateMethod();
+    }
+}
+```
+
+추상클래스인 AbstractClass 에는 실제로 실행을 위해 호출 될 public 메소드인 templateMethod 가 정의되어 있고, templateMethod 내부에는 hook1 -> hook2 의 단계를 가지는 추상메소드가 호출된다. 이 추상메소드들은 AbstractClass 를 상속받아 구현한 ConcreteClass 에서 구체적인 구현이 정의된다.
