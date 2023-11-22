@@ -10,7 +10,7 @@
   - Last in first out (LIFO)
   - 가장 마지막에 들어간것이 먼저 나오는 구조
 
-![](https://www.mbaskool.com/2020_images/stories/dec_images/lifo.jpg)
+![stack](https://www.mbaskool.com/2020_images/stories/dec_images/lifo.jpg)
 
 ### Stack 인스턴스
 
@@ -35,10 +35,9 @@ public class Stack extends Member {
    - 처음 들어간 것이 처음 나오는 구조
 2. 어떤 상황에서 사용하나?
    - 명령어 입력 History 기능에 적용
-   - 예약/ 주문 받을때 
+   - 예약/ 주문 받을때
 3. 구현
    - offer()
    - poll()
 4. 적용
    - 가장 최근 실행한 메뉴목록 20개 저장
-   - 

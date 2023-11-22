@@ -104,4 +104,10 @@ public class TemplateMethodPatternClient {
 }
 ```
 
-추상클래스인 AbstractClass 에는 실제로 실행을 위해 호출 될 public 메소드인 templateMethod 가 정의되어 있고, templateMethod 내부에는 hook1 -> hook2 의 단계를 가지는 추상메소드가 호출된다. 이 추상메소드들은 AbstractClass 를 상속받아 구현한 ConcreteClass 에서 구체적인 구현이 정의된다.
+추상클래스인 AbstractClass 에는 실제로 실행을 위해 호출 될 public 메소드인 templateMethod 가 정의되어 있고,
+templateMethod 내부에는 hook1 -> hook2 의 단계를 가지는 추상메소드가 호출된다.
+이 추상메소드들은 AbstractClass 를 상속받아 구현한 ConcreteClass 에서 구체적인 구현이 정의된다.
+
+## DAO 와 Proxy 패턴
+
+## Flyweight 패턴 (스레드 풀)

@@ -1,6 +1,6 @@
 # final
 
-변경될수 없는 이라는 의미를 가지고 있으며 상수의 개념으로 생각하면 된다.
+변경될수 없는 이라는 의미를 가지고 있으며 `상수`의 개념으로 생각하면 된다.
 
 - 사용가능한 곳
   - `클래스`
@@ -13,11 +13,14 @@
 
 ## 클래스에 붙이는 경우
 
-// 클래스에 final 을 붙이면 이 클래스의 서브 클래스를 만들 수 없다.
-// - 서브 클래스의 생성을 방지하여
-// 기존 클래스를 대체하지 못하도록 할 때 사용한다.
-// - 예)
-// java.lang.String
+클래스에 final 을 붙이면 이 클래스의 서브 클래스를 만들 수 없다.
+
+- 서브 클래스의 생성을 방지하여
+
+기존 클래스를 대체하지 못하도록 할 때 사용한다.
+
+- 예)
+ java.lang.String
 
 ```java
 final class A {
@@ -27,6 +30,7 @@ final class A {
 // final 클래스를 상속 받을 수 없다.
 public class Exam0110 // extends A
 {
+
 }
 ```
 
@@ -71,7 +75,7 @@ public class Exam0210 extends B {
 
 ## 변수에 붙이기
 
-1. 필드에 붙이기
+### 1. 필드에 붙이기
 
 ```java
 class C {
@@ -100,7 +104,7 @@ public final class Exam0310 {
 }
 ```
 
-2. 변수에 붙이기
+### 2. 변수에 붙이기
 
 ```java
 class D {
@@ -126,7 +130,7 @@ public final class Exam0320 {
 }
 ```
 
-3. 인스턴스 초기화
+### 3. 인스턴스 초기화
 
 ```java
 class E {
@@ -149,7 +153,7 @@ public final class Exam0330 {
 }
 ```
 
-4. 스태틱 상수 필드
+### 4. 스태틱 상수 필드
 
 ```java
 class F {
@@ -175,7 +179,7 @@ public final class Exam0340 {
 }
 ```
 
-5. 로컬변수에 붙이기
+### 5. 로컬변수에 붙이기
 
 ```java
 public final class Exam0410 {
@@ -200,7 +204,7 @@ public final class Exam0410 {
 }
 ```
 
-6. 파라미터에 붙이기
+### 6. 파라미터에 붙이기
 
 ```java
 class G {
